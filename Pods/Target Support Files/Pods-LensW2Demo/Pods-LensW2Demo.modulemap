@@ -1,0 +1,6 @@
+framework module Pods_LensW2Demo {
+  umbrella header "Pods-LensW2Demo-umbrella.h"
+
+  export *
+  module * { export * }
+}

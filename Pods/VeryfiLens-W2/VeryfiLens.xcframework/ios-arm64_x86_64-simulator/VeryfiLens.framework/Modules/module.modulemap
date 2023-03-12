@@ -1,0 +1,36 @@
+framework module VeryfiLens {
+    umbrella header "VeryfiLens.h"
+    
+    export *
+    module * { export * }
+
+    explicit module VeryfiLens_Private {
+      header "SubmitButton.h"
+      header "EncryptionHelper.h"
+      header "SCSiriWaveformView.h"
+      header "EncryptionHelper.h"
+      header "ImageHelperObjC.h"
+      header "RectangleHelperObjC.h"
+      header "DataHelperObjC.h"
+      header "BorderDrawer.h"
+      header "StitcherHelper.h"
+      header "CardDetectorHelper.h"
+      header "CheckDetectorHelper.h"
+      header "DocumentDetectorHelper.h"
+      header "OCRDetectorHelper.h"
+      header "ImageProcessorDelegate.h"
+      header "BlurHelper.h"
+      header "EncryptionHelper.h"
+      header "SSZipArchive.h"
+      header "SSZipCommon.h"
+      header "RectangleFeature.h"
+      export *
+    }
+}
+
+
+
+module VeryfiLens.Swift {
+  header "VeryfiLens-Swift.h"
+  requires objc
+}

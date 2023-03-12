@@ -1,0 +1,511 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)
+// swift-module-flags: -target x86_64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name VeryfiLens
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import AVFoundation
+import AWSS3
+import Accelerate
+import CoreGraphics
+import CoreImage
+import CoreLocation
+import CoreMedia
+import CoreTelephony
+import CoreVideo
+import Foundation
+import MobileCoreServices
+import Photos
+import PhotosUI
+import QuartzCore
+import Speech
+import Swift
+import SystemConfiguration
+import UIKit
+import UserNotifications
+@_exported import VeryfiLens
+import VeryfiLens_Private
+import Vision
+import _Concurrency
+import _StringProcessing
+public protocol WheelPickerLayoutDelegate : AnyObject {
+  func pickerViewStyle(for layout: WheelPickerCollectionViewLayout) -> WheelPickerStyle
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class WheelPickerCollectionViewLayout : UIKit.UICollectionViewFlowLayout {
+  @_Concurrency.MainActor(unsafe) weak open var delegate: WheelPickerLayoutDelegate?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func prepare()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func shouldInvalidateLayout(forBoundsChange newBounds: CoreFoundation.CGRect) -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutAttributesForItem(at indexPath: Foundation.IndexPath) -> UIKit.UICollectionViewLayoutAttributes?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutAttributesForElements(in rect: CoreFoundation.CGRect) -> [UIKit.UICollectionViewLayoutAttributes]?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init()
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@IBDesignable extension UIKit.UIView {
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic public var cornerRadius: CoreFoundation.CGFloat {
+    @objc get
+    @objc set(radius)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic public var borderWidth: CoreFoundation.CGFloat {
+    @objc get
+    @objc set(borderWidth)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic public var borderColor: UIKit.UIColor? {
+    @objc get
+    @objc set(color)
+  }
+}
+@_inheritsConvenienceInitializers @objc(VeryfiLensCostCode) public class VeryfiLensCostCode : ObjectiveC.NSObject, Foundation.NSSecureCoding {
+  @objc public static var supportsSecureCoding: Swift.Bool
+  @objc public var costCodeId: Foundation.NSNumber
+  @objc public var code: Swift.String
+  @objc public var desc: Swift.String
+  @objc public var name: Swift.String
+  @objc public var type: Swift.String
+  @objc public var hasCostCode: Swift.Bool {
+    @objc get
+  }
+  @objc override dynamic public init()
+  @objc public init(costCodeId: Foundation.NSNumber = 0, code: Swift.String = "", desc: Swift.String = "", name: Swift.String = "", type: Swift.String = "")
+  @objc public init(with dictionary: Foundation.NSDictionary?)
+  @objc public func encode(with coder: Foundation.NSCoder)
+  @objc required public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc(Credentials) public protocol Credentials : ObjectiveC.NSObjectProtocol {
+  @objc var clientId: Swift.String { get }
+  @objc var username: Swift.String { get }
+  @objc var apiKey: Swift.String { get }
+  @objc var url: Swift.String { get }
+  @objc init(clientId: Swift.String, username: Swift.String, apiKey: Swift.String, url: Swift.String)
+}
+@objc(DataExtractionEngine) public enum DataExtractionEngine : Swift.Int {
+  case cloudAPI
+  case inApp
+  case none
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public enum ReachabilityError : Swift.Error {
+  case failedToCreateWithAddress(Darwin.sockaddr, Swift.Int32)
+  case failedToCreateWithHostname(Swift.String, Swift.Int32)
+  case unableToSetCallback(Swift.Int32)
+  case unableToSetDispatchQueue(Swift.Int32)
+  case unableToGetFlags(Swift.Int32)
+}
+@available(*, unavailable, renamed: "Notification.Name.reachabilityChanged")
+public let ReachabilityChangedNotification: Foundation.NSNotification.Name
+extension Foundation.NSNotification.Name {
+  public static let reachabilityChanged: Foundation.Notification.Name
+}
+public class ReachabilityNetwork {
+  public typealias NetworkReachable = (ReachabilityNetwork) -> ()
+  public typealias NetworkUnreachable = (ReachabilityNetwork) -> ()
+  @available(*, unavailable, renamed: "Connection")
+  public enum NetworkStatus : Swift.CustomStringConvertible {
+    case notReachable, reachableViaWiFi, reachableViaWWAN
+    public var description: Swift.String {
+      get
+    }
+    public static func == (a: ReachabilityNetwork.NetworkStatus, b: ReachabilityNetwork.NetworkStatus) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum Connection : Swift.CustomStringConvertible {
+    case unavailable, wifi, cellular
+    public var description: Swift.String {
+      get
+    }
+    @available(*, deprecated, renamed: "unavailable")
+    public static let none: ReachabilityNetwork.Connection
+    public static func == (a: ReachabilityNetwork.Connection, b: ReachabilityNetwork.Connection) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public var whenReachable: ReachabilityNetwork.NetworkReachable?
+  public var whenUnreachable: ReachabilityNetwork.NetworkUnreachable?
+  @available(*, deprecated, renamed: "allowsCellularConnection")
+  final public let reachableOnWWAN: Swift.Bool
+  public var allowsCellularConnection: Swift.Bool
+  public var notificationCenter: Foundation.NotificationCenter
+  @available(*, deprecated, renamed: "connection.description")
+  public var currentReachabilityString: Swift.String {
+    get
+  }
+  @available(*, unavailable, renamed: "connection")
+  public var currentReachabilityStatus: ReachabilityNetwork.Connection {
+    get
+  }
+  public var connection: ReachabilityNetwork.Connection {
+    get
+  }
+  required public init(reachabilityRef: SystemConfiguration.SCNetworkReachability, queueQoS: Dispatch.DispatchQoS = .default, targetQueue: Dispatch.DispatchQueue? = nil, notificationQueue: Dispatch.DispatchQueue? = .main)
+  convenience public init(hostname: Swift.String, queueQoS: Dispatch.DispatchQoS = .default, targetQueue: Dispatch.DispatchQueue? = nil, notificationQueue: Dispatch.DispatchQueue? = .main) throws
+  convenience public init(queueQoS: Dispatch.DispatchQoS = .default, targetQueue: Dispatch.DispatchQueue? = nil, notificationQueue: Dispatch.DispatchQueue? = .main) throws
+  @objc deinit
+}
+extension ReachabilityNetwork {
+  public func startNotifier() throws
+  public func stopNotifier()
+  @available(*, deprecated, message: "Please use `connection != .none`")
+  public var isReachable: Swift.Bool {
+    get
+  }
+  @available(*, deprecated, message: "Please use `connection == .cellular`")
+  public var isReachableViaWWAN: Swift.Bool {
+    get
+  }
+  @available(*, deprecated, message: "Please use `connection == .wifi`")
+  public var isReachableViaWiFi: Swift.Bool {
+    get
+  }
+  public var description: Swift.String {
+    get
+  }
+}
+@objc public protocol Reachable : ObjectiveC.NSObjectProtocol {
+  @objc var reachableBlock: (() -> ())? { get set }
+  @objc var unreachableBlock: (() -> ())? { get set }
+  @objc var isReachable: Swift.Bool { get }
+  @objc var isReachableViaWWAN: Swift.Bool { get }
+  @objc var isReachableViaWiFi: Swift.Bool { get }
+}
+@objc(VeryfiLensDelegate) public protocol VeryfiLensDelegate {
+  @objc func veryfiLensClose(_ json: [Swift.String : Any])
+  @objc func veryfiLensError(_ json: [Swift.String : Any])
+  @objc func veryfiLensSuccess(_ json: [Swift.String : Any])
+  @objc func veryfiLensUpdate(_ json: [Swift.String : Any])
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class VeryfiLens : ObjectiveC.NSObject {
+  @objc public class func shared() -> VeryfiLens
+  @objc public var credentials: VeryfiLensCredentials {
+    @objc get
+  }
+  @objc public var settings: VeryfiLensSettings {
+    @objc get
+  }
+  @objc public var utils: VeryfiLensUtils {
+    @objc get
+  }
+  @objc weak public var delegate: VeryfiLensDelegate?
+  @objc public func configure(with credentials: VeryfiLensCredentials, settings: VeryfiLensSettings, completion: ((Swift.Bool) -> ())? = nil)
+  @objc public func showCamera(in viewController: UIKit.UIViewController)
+  @objc public func showGallery(in viewController: UIKit.UIViewController)
+  @objc public func showDocumentBrowser(in viewController: UIKit.UIViewController)
+  @objc public func showCrop(in viewController: UIKit.UIViewController, image: UIKit.UIImage, completion: ((UIKit.UIImage?) -> Swift.Void)? = nil)
+  @objc public func headlessUpload(images: [UIKit.UIImage])
+  @objc public func headlessUpload(url: Foundation.URL)
+  @objc deinit
+}
+@objc public enum CustomerOrProject : Swift.Int {
+  case customer
+  case project
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @objc(VeryfiLensCPModel) public class VeryfiLensCPModel : ObjectiveC.NSObject, Foundation.NSSecureCoding {
+  @objc public static var supportsSecureCoding: Swift.Bool
+  @objc public var primaryCP: CustomerOrProject
+  @objc public var customerId: Foundation.NSNumber
+  @objc public var customerName: Swift.String
+  @objc public var projectId: Foundation.NSNumber?
+  @objc public var projectName: Swift.String?
+  @objc override dynamic public init()
+  @objc(initWithDictionary:) public init(dictionary: [Swift.String : Any])
+  @objc public func encode(with coder: Foundation.NSCoder)
+  @objc required public init?(coder: Foundation.NSCoder)
+  @objc(fusedId) public func fusedId() -> Swift.String
+  @objc(displayName) public func displayName() -> Swift.String
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(VeryfiLensTag) public class VeryfiLensTag : ObjectiveC.NSObject, Foundation.NSSecureCoding {
+  @objc public static var supportsSecureCoding: Swift.Bool
+  @objc public var tagId: Foundation.NSNumber
+  @objc public var name: Swift.String
+  @objc public var currency: VeryfiLensCurrency
+  @objc public var spent: Swift.Double
+  @objc public var receiptsCount: Swift.Int
+  @objc public var status: Swift.String
+  @objc public var type: Swift.String
+  @objc override dynamic public init()
+  @objc(initWithDictionary:) public init(dictionary: [Swift.String : Any]? = nil)
+  @objc public func encode(with coder: Foundation.NSCoder)
+  @objc required public init?(coder: Foundation.NSCoder)
+  @objc(getFormattedTotalWithCurrency) public func total() -> Swift.String
+  @objc(wasSourcedExternally) public func wasSourcedExternally() -> Swift.Bool
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(VeryfiLensUtils) public class VeryfiLensUtils : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  @objc public init(credentials: VeryfiLensCredentials, settings: VeryfiLensSettings, completion: ((Swift.Bool) -> ())?)
+  @objc public func update(settings: VeryfiLensSettings)
+  @objc public func packagesInQueue() -> [Swift.String]
+  @objc public func retryAllPackages()
+  @objc(retryPackageWithID:) public func retryPackage(with packageID: Swift.String)
+  @objc public func discardAllPackages()
+  @objc public func discardPackage(with packageID: Swift.String)
+  @objc public func getImages(from packageID: Swift.String) -> [UIKit.UIImage]
+  @objc public func getMetaData(from packageID: Swift.String) -> [[Swift.AnyHashable : Any]]
+  @objc public func getPdfURL(from packageID: Swift.String) -> Foundation.URL?
+  @objc public func base64(for data: Foundation.Data) -> Swift.String
+  @objc public var version: Swift.String {
+    @objc get
+  }
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) open class WheelPickerCell : UIKit.UICollectionViewCell {
+  @_Concurrency.MainActor(unsafe) public static let identifier: Swift.String
+  @_Concurrency.MainActor(unsafe) open var label: UIKit.UILabel!
+  @_Concurrency.MainActor(unsafe) open var imageView: UIKit.UIImageView!
+  @_Concurrency.MainActor(unsafe) open var font: UIKit.UIFont!
+  @_Concurrency.MainActor(unsafe) open var highlightedFont: UIKit.UIFont!
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var isSelected: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func prepareForReuse()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(VeryfiLensCurrency) public class VeryfiLensCurrency : ObjectiveC.NSObject, Foundation.NSSecureCoding {
+  @objc public static var supportsSecureCoding: Swift.Bool
+  @objc public var code: Swift.String
+  @objc public var name: Swift.String
+  @objc public var symbol: Swift.String
+  @objc public var isRecent: Swift.Bool
+  @objc override dynamic public init()
+  @objc(initWithDictionary:) public init(dictionary: [Swift.String : Any]? = nil)
+  @objc public func encode(with coder: Foundation.NSCoder)
+  @objc required public init?(coder: Foundation.NSCoder)
+  @objc(getDeviceCurrencyInfo) public static func currencyInfo() -> [Swift.String : Any]
+  @objc(asDict) public func json() -> [Swift.String : Any]
+  @objc deinit
+}
+public enum WheelPickerStyle : Swift.Int {
+  case style3D
+  case styleFlat
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public protocol WheelPickerDataSource {
+  @objc func numberOfItems(_ wheelPicker: WheelPicker) -> Swift.Int
+  @objc optional func titleFor(_ wheelPicker: WheelPicker, at index: Swift.Int) -> Swift.String
+  @objc optional func imageFor(_ wheelPicker: WheelPicker, at index: Swift.Int) -> UIKit.UIImage
+}
+@objc public protocol WheelPickerDelegate {
+  @objc optional func wheelPicker(_ wheelPicker: WheelPicker, didSelectItemAt index: Swift.Int)
+  @objc optional func wheelPicker(_ wheelPicker: WheelPicker, marginForItem index: Swift.Int) -> CoreFoundation.CGSize
+  @objc optional func wheelPicker(_ wheelPicker: WheelPicker, configureLabel label: UIKit.UILabel, at index: Swift.Int)
+  @objc optional func wheelPicker(_ wheelPicker: WheelPicker, configureImageView imageView: UIKit.UIImageView, at index: Swift.Int)
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class WheelPicker : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) weak open var delegate: WheelPickerDelegate?
+  @_Concurrency.MainActor(unsafe) weak open var dataSource: WheelPickerDataSource?
+  @_Concurrency.MainActor(unsafe) open var font: UIKit.UIFont
+  @_Concurrency.MainActor(unsafe) open var highlightedFont: UIKit.UIFont
+  @_Concurrency.MainActor(unsafe) open var textColor: UIKit.UIColor
+  @_Concurrency.MainActor(unsafe) open var highlightedTextColor: UIKit.UIColor
+  @_Concurrency.MainActor(unsafe) open var isMaskDisabled: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) open var interitemSpacing: CoreFoundation.CGFloat
+  @_Concurrency.MainActor(unsafe) open var fisheyeFactor: CoreFoundation.CGFloat {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) open var style: WheelPickerStyle
+  @_Concurrency.MainActor(unsafe) open var scrollDirection: UIKit.UICollectionView.ScrollDirection {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) open var selectedItem: Swift.Int {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutSubviews()
+  @objc deinit
+}
+extension WheelPicker {
+  @_Concurrency.MainActor(unsafe) public func reloadData()
+  @_Concurrency.MainActor(unsafe) public func select(_ item: Swift.Int, animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) public func scroll(to item: Swift.Int, _ animated: Swift.Bool)
+}
+extension WheelPicker : UIKit.UICollectionViewDataSource {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func numberOfSections(in collectionView: UIKit.UICollectionView) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func collectionView(_ collectionView: UIKit.UICollectionView, numberOfItemsInSection section: Swift.Int) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func collectionView(_ collectionView: UIKit.UICollectionView, cellForItemAt indexPath: Foundation.IndexPath) -> UIKit.UICollectionViewCell
+}
+extension WheelPicker : UIKit.UICollectionViewDelegateFlowLayout {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func collectionView(_ collectionView: UIKit.UICollectionView, layout collectionViewLayout: UIKit.UICollectionViewLayout, sizeForItemAt indexPath: Foundation.IndexPath) -> CoreFoundation.CGSize
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func collectionView(_ collectionView: UIKit.UICollectionView, layout collectionViewLayout: UIKit.UICollectionViewLayout, insetForSectionAt section: Swift.Int) -> UIKit.UIEdgeInsets
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func collectionView(_ collectionView: UIKit.UICollectionView, layout collectionViewLayout: UIKit.UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Swift.Int) -> CoreFoundation.CGFloat
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func collectionView(_ collectionView: UIKit.UICollectionView, layout collectionViewLayout: UIKit.UICollectionViewLayout, minimumLineSpacingForSectionAt section: Swift.Int) -> CoreFoundation.CGFloat
+}
+extension WheelPicker : UIKit.UICollectionViewDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func collectionView(_ collectionView: UIKit.UICollectionView, didSelectItemAt indexPath: Foundation.IndexPath)
+}
+extension WheelPicker : UIKit.UIScrollViewDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func scrollViewDidEndDecelerating(_ scrollView: UIKit.UIScrollView)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func scrollViewDidEndDragging(_ scrollView: UIKit.UIScrollView, willDecelerate decelerate: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func scrollViewDidScroll(_ scrollView: UIKit.UIScrollView)
+}
+extension WheelPicker : WheelPickerLayoutDelegate {
+  @_Concurrency.MainActor(unsafe) public func pickerViewStyle(for layout: WheelPickerCollectionViewLayout) -> WheelPickerStyle
+}
+@objc(VeryfiLensCredentials) public class VeryfiLensCredentials : ObjectiveC.NSObject, Credentials {
+  @objc final public let clientId: Swift.String
+  @objc final public let username: Swift.String
+  @objc final public let apiKey: Swift.String
+  @objc final public let url: Swift.String
+  @objc required public init(clientId: Swift.String, username: Swift.String, apiKey: Swift.String, url: Swift.String)
+  @objc public init(with dictionary: [Swift.String : Any])
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(VeryfiLensSettings) public class VeryfiLensSettings : ObjectiveC.NSObject, Foundation.NSSecureCoding {
+  @objc public var autoDocDetectionAndCropIsOn: Swift.Bool
+  @objc public var autoDeleteAfterProcessing: Swift.Bool
+  @objc public var autoLightDetectionIsOn: Swift.Bool
+  @objc public var autoCaptureIsOn: Swift.Bool
+  @objc public var autoRotateIsOn: Swift.Bool
+  @objc public var autoSkewCorrectionIsOn: Swift.Bool
+  @objc public var autoCropGalleryIsOn: Swift.Bool
+  @objc public var autoCropBrowserIsOn: Swift.Bool
+  @objc public var autoSubmitDocumentOnCapture: Swift.Bool
+  @objc public var backupDocsToGallery: Swift.Bool
+  @objc public var barcodeExtractionIsOn: Swift.Bool
+  @objc public var blurDetectionIsOn: Swift.Bool
+  @objc public var boostModeIsOn: Swift.Bool
+  @objc public var boundingBoxesIsOn: Swift.Bool
+  @objc public var brandImage: UIKit.UIImage?
+  @objc public var browseIsOn: Swift.Bool
+  @objc public var categories: [Swift.String]
+  @objc public var checksBackIsOn: Swift.Bool
+  @objc public var cleanBorderIsOn: Swift.Bool
+  @objc public var closeCameraOnSubmit: Swift.Bool
+  @objc public var confidenceDetailsIsOn: Swift.Bool
+  @objc public var customLensStrings: [Swift.String : [Swift.String : Swift.String]]
+  @objc public var dataExtractionEngine: DataExtractionEngine
+  @objc public var defaultSelectedDocumentType: Swift.String
+  @objc public var detectBlurResponseIsOn: Swift.Bool
+  @objc public var dictateIsOn: Swift.Bool
+  @objc public var allowSubmitUndetectedDocsIsOn: Swift.Bool
+  @objc public var documentTypes: [Swift.String]
+  @objc public var docDetectFillUIColor: UIKit.UIColor?
+  @objc public var docDetectStrokeUIColor: UIKit.UIColor?
+  @objc public var emailCCIsOn: Swift.Bool
+  @objc public var emailCCDomain: Swift.String
+  @objc public var externalId: Swift.String?
+  @objc public var galleryIsOn: Swift.Bool
+  @objc public var gpuIsOn: Swift.Bool
+  @objc public var isReimbursableDefault: Swift.Bool
+  @objc public var isProduction: Swift.Bool
+  @objc public var locationServicesIsOn: Swift.Bool
+  @objc public var manualCropIsOn: Swift.Bool
+  @objc public var moreMenuIsOn: Swift.Bool
+  @objc public var moreSettingsMenuIsOn: Swift.Bool
+  @objc public var multipleDocumentsIsOn: Swift.Bool
+  @objc public var ocrRegex: Swift.String
+  @objc public var ocrViewCornerRadius: Swift.Int
+  @objc public var ocrViewHeight: Swift.Int
+  @objc public var ocrViewWidth: Swift.Int
+  @objc public var originalImageMaxSizeInMB: Swift.Double
+  @objc public var parseAddressIsOn: Swift.Bool
+  @objc public var rotateDocIsOn: Swift.Bool
+  @objc public var returnStitchedPDF: Swift.Bool
+  @objc public var saveLogIsOn: Swift.Bool
+  @objc public var shareLogsIsOn: Swift.Bool
+  @objc public var stitchIsOn: Swift.Bool
+  @objc public var showDocumentTypes: Swift.Bool
+  @objc public var showZoomButton: Swift.Bool
+  @objc public var shieldProtectionIsOn: Swift.Bool
+  @objc public var stitchedPDFPixelDensityMultiplier: Swift.Double
+  @objc public var submitButtonBackgroundColor: Swift.String
+  @objc public var submitButtonBorderColor: Swift.String
+  @objc public var submitButtonCornerRadius: Swift.Int
+  @objc public var submitButtonFontColor: Swift.String
+  @objc public var costCodes: [VeryfiLensCostCode]?
+  @objc public var customers: [VeryfiLensCPModel]?
+  @objc public var tags: [VeryfiLensTag]?
+  @objc public var categoriesList: [VeryfiLensCategory]?
+  @objc public var categoryName: Swift.String?
+  @objc public var tagName: Swift.String?
+  @objc public func string(from dataExtractionEngine: DataExtractionEngine) -> Swift.String
+  @objc public var json: [Swift.String : Any] {
+    @objc get
+  }
+  @objc public static var supportsSecureCoding: Swift.Bool
+  @objc override dynamic public init()
+  @objc public init(with dictionary: [Swift.String : Any]? = nil)
+  @objc required public init?(coder: Foundation.NSCoder)
+  @objc public func encode(with coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc(DocumentType) public enum DocumentType : Swift.Int {
+  case longReceipt
+  case receipt
+  case bill
+  case check
+  case creditCard
+  case businessCard
+  case other
+  case dictation
+  case custom
+  case code
+  case w2
+  case w9
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @objc(VeryfiLensCategory) public class VeryfiLensCategory : ObjectiveC.NSObject, Foundation.NSSecureCoding {
+  @objc public static var supportsSecureCoding: Swift.Bool
+  @objc public var categoryId: Foundation.NSNumber
+  @objc public var name: Swift.String
+  @objc public var monthlyBudget: Swift.Double
+  @objc public var currency: VeryfiLensCurrency
+  @objc public var spent: Swift.Double
+  @objc public var receiptsCount: Swift.Int
+  @objc public var type: Swift.String
+  @objc public var mimo: Swift.String
+  @objc override dynamic public init()
+  @objc(initWithDictionary:) public init(dictionary: [Swift.String : Any])
+  @objc public func encode(with coder: Foundation.NSCoder)
+  @objc required public init?(coder: Foundation.NSCoder)
+  @objc(getFormattedTotalWithCurrency) public func total() -> Swift.String
+  @objc(getTypeNameFromTypeKey:) public static func getTypeName(from typeKey: Swift.String) -> Swift.String
+  @objc(types) public static func types() -> [Swift.String : Swift.String]
+  @objc deinit
+}
+extension DataExtractionEngine : Swift.Equatable {}
+extension DataExtractionEngine : Swift.Hashable {}
+extension DataExtractionEngine : Swift.RawRepresentable {}
+@available(*, unavailable, renamed: "Connection")
+extension ReachabilityNetwork.NetworkStatus : Swift.Equatable {}
+@available(*, unavailable, renamed: "Connection")
+extension ReachabilityNetwork.NetworkStatus : Swift.Hashable {}
+extension ReachabilityNetwork.Connection : Swift.Equatable {}
+extension ReachabilityNetwork.Connection : Swift.Hashable {}
+extension CustomerOrProject : Swift.Equatable {}
+extension CustomerOrProject : Swift.Hashable {}
+extension CustomerOrProject : Swift.RawRepresentable {}
+extension DocumentType : Swift.Equatable {}
+extension DocumentType : Swift.Hashable {}
+extension DocumentType : Swift.RawRepresentable {}
+extension WheelPickerStyle : Swift.Equatable {}
+extension WheelPickerStyle : Swift.Hashable {}
+extension WheelPickerStyle : Swift.RawRepresentable {}
