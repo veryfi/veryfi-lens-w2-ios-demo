@@ -28,7 +28,7 @@ class LogsViewController: UIViewController {
                                                           url: URL)
         let settings = VeryfiLensSettings(with: jsonSettings)
         // Specific document types for this demo (VeryfiLens-Receipts)
-        settings.documentTypes = ["receipt", "bill"]
+        settings.documentTypes = ["w2"]
         settings.showDocumentTypes = true
         
         VeryfiLens.shared().delegate = self

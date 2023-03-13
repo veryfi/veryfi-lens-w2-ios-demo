@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SOO-Md-Yia">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SOO-Md-Yia">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,7 +12,7 @@
         <!--Logs View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="LogsViewController" customModule="LensReceiptsDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="LogsViewController" customModule="LensW2Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -78,21 +78,21 @@
         <!--Settings-->
         <scene sceneID="lj5-ru-XZ5">
             <objects>
-                <viewController title="Settings" id="9SV-Ku-5g0" customClass="LensSettingsViewController" customModule="LensReceiptsDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Settings" id="9SV-Ku-5g0" customClass="LensSettingsViewController" customModule="LensW2Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="71e-iW-jvy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VeryfiLogo" translatesAutoresizingMaskIntoConstraints="NO" id="3ZY-NR-rMF">
-                                <rect key="frame" x="40" y="92" width="334" height="120"/>
+                                <rect key="frame" x="40" y="108" width="334" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="C8F-Py-vTf"/>
+                                    <constraint firstAttribute="height" constant="100" id="C8F-Py-vTf"/>
                                 </constraints>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="24" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Eak-72-MqE">
-                                <rect key="frame" x="0.0" y="212" width="414" height="650"/>
+                                <rect key="frame" x="0.0" y="224" width="414" height="638"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="switchCell" rowHeight="50" id="0xU-z8-FTg" customClass="SwitchTableViewCell" customModule="LensReceiptsDemo" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="switchCell" rowHeight="50" id="0xU-z8-FTg" customClass="SwitchTableViewCell" customModule="LensW2Demo" customModuleProvider="target">
                                         <rect key="frame" x="20" y="55.5" width="374" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0xU-z8-FTg" id="17p-Al-Cwu">
@@ -105,7 +105,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pS3-qJ-vVh" customClass="VeryfiSwitch" customModule="LensReceiptsDemo" customModuleProvider="target">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pS3-qJ-vVh" customClass="VeryfiSwitch" customModule="LensW2Demo" customModuleProvider="target">
                                                     <rect key="frame" x="307" y="9.5" width="51" height="31"/>
                                                 </switch>
                                             </subviews>
@@ -123,7 +123,7 @@
                                             <outlet property="titleLabel" destination="nbE-Xq-4CK" id="dbA-4s-hdu"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="valueCell" rowHeight="50" id="Tny-9a-JhS" customClass="ValueTableViewCell" customModule="LensReceiptsDemo" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="valueCell" rowHeight="50" id="Tny-9a-JhS" customClass="ValueTableViewCell" customModule="LensW2Demo" customModuleProvider="target">
                                         <rect key="frame" x="20" y="105.5" width="374" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Tny-9a-JhS" id="Rbe-Us-slI">
@@ -158,7 +158,7 @@
                                             <outlet property="titleLabel" destination="4ad-Ds-9fd" id="7DY-cs-7bl"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="colorCell" rowHeight="50" id="1O5-29-rsM" customClass="ColorTableViewCell" customModule="LensReceiptsDemo" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="colorCell" rowHeight="50" id="1O5-29-rsM" customClass="ColorTableViewCell" customModule="LensW2Demo" customModuleProvider="target">
                                         <rect key="frame" x="20" y="155.5" width="374" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1O5-29-rsM" id="KrA-Px-ISn">
@@ -200,9 +200,9 @@
                         <viewLayoutGuide key="safeArea" id="CFl-aS-gnq"/>
                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Eak-72-MqE" firstAttribute="top" secondItem="3ZY-NR-rMF" secondAttribute="bottom" id="0Wb-zA-K4P"/>
+                            <constraint firstItem="Eak-72-MqE" firstAttribute="top" secondItem="3ZY-NR-rMF" secondAttribute="bottom" constant="16" id="0Wb-zA-K4P"/>
                             <constraint firstItem="Eak-72-MqE" firstAttribute="leading" secondItem="CFl-aS-gnq" secondAttribute="leading" id="AMo-BV-knx"/>
-                            <constraint firstItem="3ZY-NR-rMF" firstAttribute="top" secondItem="CFl-aS-gnq" secondAttribute="top" id="HWZ-Js-J4S"/>
+                            <constraint firstItem="3ZY-NR-rMF" firstAttribute="top" secondItem="CFl-aS-gnq" secondAttribute="top" constant="16" id="HWZ-Js-J4S"/>
                             <constraint firstItem="3ZY-NR-rMF" firstAttribute="leading" secondItem="CFl-aS-gnq" secondAttribute="leading" constant="40" id="Qvq-5F-Tv6"/>
                             <constraint firstItem="CFl-aS-gnq" firstAttribute="trailing" secondItem="Eak-72-MqE" secondAttribute="trailing" id="YDZ-JQ-WwA"/>
                             <constraint firstItem="CFl-aS-gnq" firstAttribute="bottom" secondItem="Eak-72-MqE" secondAttribute="bottom" id="afz-ac-3xH"/>
@@ -221,7 +221,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="VeryfiLogo" width="369" height="78"/>
+        <image name="VeryfiLogo" width="2254" height="764"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
