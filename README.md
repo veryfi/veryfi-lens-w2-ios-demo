@@ -32,6 +32,8 @@ You can watch our video:
 ## Veryfi Lens W-2 iOS Example <a name="example"></a>
 This is an example of how to use Veryfi Lens W-2 in your app, you can find the developer documentation [here](https://app.veryfi.com/lens/docs/ios/).
 
+![W2](https://github.com/veryfi/veryfi-lens-w2-ios-demo/assets/2013102/91ab373d-225c-48e6-92a2-27b0bc258c01)
+
 ## How to add Veryfi Lens W-2 to your project <a name="cocoapods"></a>
 
 Install from our private [Cocoapods](https://hub.veryfi.com/api/settings/keys).
